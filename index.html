@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Remover</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 40px; }
+        img { max-width: 400px; margin-top: 20px; }
+        .btn { margin-top: 15px; padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .download-link { display: inline-block; margin-top: 20px; background: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Remove Background</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required><br><br>
+        <button class="btn" type="submit">Upload & Remove</button>
+    </form>
+
+    {% if filename %}
+        <h2>Processed Image</h2>
+        <img src="/temp/{{ filename }}" alt="Output Image"><br>
+        <a class="download-link" href="/temp/{{ filename }}" download>Download</a>
+        <p><small>This file will auto-delete in 60 seconds.</small></p>
+    {% endif %}
+</body>
+</html>
